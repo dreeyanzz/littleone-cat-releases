@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LittleOne Cat — Download for Windows</title>
+<meta name="description" content="Download the latest LittleOne Cat for Windows — an always-on-top, click-through desktop cat companion that types, clicks, and watches along with you.">
+<meta name="theme-color" content="#ffd978">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #ffd978;
+    --card: #fffdf4;
+    --ink: #17171b;
+    --muted: rgba(23, 23, 27, 0.68);
+    --soft: rgba(23, 23, 27, 0.08);
+    --accent: #f2b25c;
+    --ok: #2f7d4a;
+    --font: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    background-image: radial-gradient(rgba(23, 23, 27, 0.08) 1.25px, transparent 1.25px);
+    background-size: 22px 22px;
+    color: var(--ink);
+    font: 16px/1.55 var(--font);
+    padding: clamp(20px, 4vw, 48px) 16px 56px;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 2.5px solid var(--ink);
+    border-radius: 22px;
+    box-shadow: 0 6px 0 var(--ink);
+    padding: clamp(22px, 4vw, 38px);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(20px, 3.5vw, 36px);
+    align-items: center;
+  }
+  .mascot {
+    width: clamp(112px, 16vw, 152px);
+    height: clamp(112px, 16vw, 152px);
+    border-radius: 28px;
+    border: 2.5px solid var(--ink);
+    box-shadow: 0 5px 0 var(--ink);
+    overflow: hidden;
+    background: var(--bg);
+    flex: none;
+  }
+  .mascot svg { display: block; width: 100%; height: 100%; }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    border: 1.5px solid var(--ink);
+    background: var(--bg);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .pill.live {
+    background: var(--ink);
+    color: var(--card);
+  }
+  .pill .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #8be08b;
+  }
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: clamp(30px, 4.8vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  .tagline {
+    margin: 0 0 20px;
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--muted);
+    max-width: 560px;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    text-decoration: none;
+    font: 700 16px/1 var(--font);
+    color: var(--ink);
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 14px 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--ink);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+  }
+  .btn:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 5px 0 var(--ink); }
+  .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ink); }
+  .btn.primary {
+    background: var(--ink);
+    color: var(--card);
+    padding: 15px 26px;
+    font-size: 17px;
+  }
+  .btn.primary:hover { background: #2a2a33; }
+  .btn.primary svg { width: 19px; height: 19px; flex: none; }
+
+  .meta {
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+  }
+  .meta b { color: var(--ink); }
+
+  .smartscreen {
+    margin-top: 14px;
+    border-top: 1.5px dashed rgba(23, 23, 27, 0.2);
+    padding-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .smartscreen summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--ink);
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .smartscreen summary::-webkit-details-marker { display: none; }
+  .smartscreen summary::before { content: "▸"; font-size: 11px; transition: transform 0.15s; }
+  .smartscreen[open] summary::before { transform: rotate(90deg); }
+  .smartscreen p { margin: 6px 0 0; }
+
+  /* ---------- Feature Grid ---------- */
+  .section-title {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.72;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .feat {
+    background: var(--card);
+    border: 2px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: 0 4px 0 var(--ink);
+    padding: 18px 18px 16px;
+  }
+  .feat-icon {
+    font-size: 22px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .feat h3 {
+    margin: 0 0 5px;
+    font-size: 15px;
+    line-height: 1.25;
+  }
+  .feat p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  /* ---------- Release Notes & History ---------- */
+  .two-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: 16px;
+  }
+  .notes-card {
+    padding: 22px 24px;
+  }
+  .notes-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .notes-head h2 {
+    margin: 0;
+    font-size: 19px;
+  }
+  .notes-date {
+    font-size: 12.5px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .notes-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  .notes-list li { margin: 5px 0; }
+  .notes-empty { margin: 0; font-size: 14px; color: var(--muted); }
+
+  .history-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(23, 23, 27, 0.22);
+    background: #fff;
+    font-size: 13.5px;
+  }
+  .history-item a {
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .history-item a:hover { text-decoration: underline; }
+  .history-meta {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  footer a { color: var(--ink); font-weight: 700; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 780px) {
+    .hero { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .pills, .cta-row, .meta { justify-content: center; }
+    .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .two-col { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .features { grid-template-columns: 1fr; }
+    .btn.primary { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+
+    <section class="card hero">
+      <div class="mascot" aria-hidden="true">
+        <svg id="catSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <rect width="512" height="512" fill="#ffd978"/>
+          <g transform="translate(256 270)">
+            <path d="M-120 -70 L-104 -150 L-44 -104 Q0 -116 44 -104 L104 -150 L120 -70 Q150 -10 120 60 Q80 120 0 120 Q-80 120 -120 60 Q-150 -10 -120 -70Z" fill="#151515"/>
+            <path d="M-100 -96 L-92 -134 L-62 -112Z M100 -96 L92 -134 L62 -112Z" fill="#e6a6a0"/>
+            <ellipse cx="-48" cy="-6" rx="26" ry="30" fill="#e2b93b"/>
+            <ellipse cx="48" cy="-6" rx="26" ry="30" fill="#e2b93b"/>
+            <ellipse id="pupilL" cx="-48" cy="-6" rx="7" ry="22" fill="#151515"/>
+            <ellipse id="pupilR" cx="48" cy="-6" rx="7" ry="22" fill="#151515"/>
+            <path d="M-10 40 L10 40 L0 52Z" fill="#e6a6a0"/>
+            <path d="M0 52 Q-14 70 -30 62 M0 52 Q14 70 30 62" fill="none" stroke="#8b8f86" stroke-width="5" stroke-linecap="round"/>
+            <g stroke="#cfd2c8" stroke-width="4" stroke-linecap="round">
+              <path d="M-70 44 L-132 34 M-70 58 L-130 66"/>
+              <path d="M70 44 L132 34 M70 58 L130 66"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div>
+        <div class="pills">
+          <span class="pill live"><span class="dot"></span><span id="versionPill">Checking latest…</span></span>
+          <span class="pill">Windows 10 / 11 (64-bit)</span>
+          <span class="pill">Auto-Updating</span>
+        </div>
+
+        <h1>LittleOne Cat</h1>
+        <p class="tagline">An always-on-top, click-through desktop cat that types along with your keyboard, follows your mouse, and stays completely out of your way.</p>
+
+        <div class="cta-row">
+          <a class="btn primary" id="downloadBtn" href="https://github.com/dreeyanzz/littleone-cat-releases/releases/latest">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 20h16"/>
+            </svg>
+            <span id="downloadLabel">Download for Windows</span>
+          </a>
+          <a class="btn" id="allReleasesBtn" href="https://github.com/dreeyanzz/littleone-cat-releases/releases" target="_blank" rel="noopener">All releases</a>
+        </div>
+
+        <div class="meta" id="downloadMeta">
+          <span>Per-user installer (no admin required)</span>
+          <span>·</span>
+          <span>Install once — future fixes update automatically in-app</span>
+        </div>
+
+        <details class="smartscreen">
+          <summary>Windows SmartScreen note</summary>
+          <p>Because this is an independent unsigned build, Windows Defender SmartScreen may show a warning on first install. Click <b>More info</b> → <b>Run anyway</b> to continue.</p>
+        </details>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">What It Does</h2>
+      <div class="features">
+        <article class="feat">
+          <div class="feat-icon">👻</div>
+          <h3>Always On Top &amp; Click-Through</h3>
+          <p>Floats cleanly over your apps without blocking buttons behind it, and softly fades when your cursor passes over.</p>
+        </article>
+        <article class="feat">
+          <div class="feat-icon">⌨️</div>
+          <h3>Types &amp; Clicks Along Globally</h3>
+          <p>Mirrors your real typing, clicks, scroll wheel, and cursor gaze across all apps — with optional Privacy Mode to hide key names.</p>
+        </article>
+        <article class="feat">
+          <div class="feat-icon">🎨</div>
+          <h3>Custom Coats &amp; JSON Sharing</h3>
+          <p>Edit any of the 15 coats into your own named designs, right-click to rename or tweak, and copy/paste JSON to share cats.</p>
+        </article>
+        <article class="feat">
+          <div class="feat-icon">📐</div>
+          <h3>Position, Multi-Monitor &amp; Scale</h3>
+          <p>Snap to any corner or monitor, drag directly in Drag Mode, scale from 40% to 200%, and tune opacity to taste.</p>
+        </article>
+        <article class="feat">
+          <div class="feat-icon">📥</div>
+          <h3>Quiet System Tray Companion</h3>
+          <p>Zero taskbar clutter — close Settings to hide it to the tray, toggle Drag Mode anytime, or set it to start with Windows.</p>
+        </article>
+        <article class="feat">
+          <div class="feat-icon">✨</div>
+          <h3>Seamless In-App Updates</h3>
+          <p>Automatically checks for new releases and installs updates silently in place without re-running the installer wizard.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="two-col">
+      <div class="card notes-card">
+        <div class="notes-head">
+          <h2 id="notesTitle">What's New</h2>
+          <span class="notes-date" id="notesDate"></span>
+        </div>
+        <div id="notesBody"><p class="notes-empty">Loading latest release notes…</p></div>
+      </div>
+
+      <div class="card notes-card">
+        <div class="notes-head">
+          <h2>Recent Releases</h2>
+        </div>
+        <ul class="history-list" id="historyList">
+          <li class="history-item"><span>Loading…</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      Always serves the latest release from
+      <a href="https://github.com/dreeyanzz/littleone-cat-releases/releases" target="_blank" rel="noopener">dreeyanzz/littleone-cat-releases</a>.
+    </footer>
+
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const REPO = 'dreeyanzz/littleone-cat-releases';
+      const API_LATEST = `https://api.github.com/repos/${REPO}/releases/latest`;
+      const API_LIST = `https://api.github.com/repos/${REPO}/releases?per_page=5`;
+      const FALLBACK_URL = `https://github.com/${REPO}/releases/latest`;
+
+      const $ = (id) => document.getElementById(id);
+
+      function fmtBytes(n) {
+        if (!n || n <= 0) return '';
+        const units = ['B', 'KB', 'MB', 'GB'];
+        let i = 0, v = n;
+        while (v >= 1024 && i < units.length - 1) { v /= 1024; i++; }
+        return (v >= 10 || i === 0 ? v.toFixed(0) : v.toFixed(1)) + ' ' + units[i];
+      }
+
+      function fmtDate(iso) {
+        if (!iso) return '';
+        const d = new Date(iso);
+        if (isNaN(d)) return '';
+        return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      }
+
+      function renderNotes(text) {
+        const host = $('notesBody');
+        host.innerHTML = '';
+        if (!text || !text.trim()) {
+          const p = document.createElement('p');
+          p.className = 'notes-empty';
+          p.textContent = 'No release notes provided for this version.';
+          host.appendChild(p);
+          return;
+        }
+        const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+        const ul = document.createElement('ul');
+        ul.className = 'notes-list';
+        let added = 0;
+        for (const line of lines) {
+          if (/^[-*•]\s+/.test(line)) {
+            const li = document.createElement('li');
+            li.textContent = line.replace(/^[-*•]\s+/, '');
+            ul.appendChild(li);
+            added++;
+          } else if (added === 0) {
+            const p = document.createElement('p');
+            p.className = 'notes-empty';
+            p.style.marginBottom = '8px';
+            p.style.color = 'var(--ink)';
+            p.style.fontWeight = '600';
+            p.textContent = line.replace(/^#+\s*/, '');
+            host.appendChild(p);
+          } else {
+            const li = document.createElement('li');
+            li.textContent = line;
+            ul.appendChild(li);
+            added++;
+          }
+        }
+        if (added > 0) host.appendChild(ul);
+      }
+
+      async function loadLatest() {
+        try {
+          const res = await fetch(API_LATEST, { cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const rel = await res.json();
+          const tag = rel.tag_name || rel.name || 'Latest';
+          const exe = (rel.assets || []).find((a) => /\.exe$/i.test(a.name));
+
+          $('versionPill').textContent = `Latest · ${tag}`;
+          $('notesTitle').textContent = `What's New in ${tag}`;
+          $('notesDate').textContent = fmtDate(rel.published_at);
+          renderNotes(rel.body);
+
+          if (exe && exe.browser_download_url) {
+            $('downloadBtn').href = exe.browser_download_url;
+            $('downloadBtn').setAttribute('download', exe.name);
+            $('downloadLabel').textContent = `Download ${tag} for Windows`;
+            const metaEl = $('downloadMeta');
+            metaEl.textContent = '';
+            const items = [
+              { bold: true, text: exe.name },
+              { text: fmtBytes(exe.size) },
+              { text: fmtDate(rel.published_at) },
+              { text: 'No admin required · Auto-updates built in' },
+            ].filter((x) => x.text);
+            items.forEach((item, i) => {
+              if (i > 0) {
+                const sep = document.createElement('span');
+                sep.textContent = '·';
+                metaEl.appendChild(sep);
+              }
+              const el = document.createElement(item.bold ? 'b' : 'span');
+              el.textContent = item.text;
+              metaEl.appendChild(el);
+            });
+          } else {
+            $('downloadBtn').href = rel.html_url || FALLBACK_URL;
+            $('downloadLabel').textContent = `Download ${tag} on GitHub`;
+          }
+        } catch {
+          $('versionPill').textContent = 'Latest Release';
+          $('downloadBtn').href = FALLBACK_URL;
+          $('downloadLabel').textContent = 'Download Latest for Windows';
+          $('notesBody').innerHTML = '<p class="notes-empty">Click <b>Download Latest for Windows</b> above to get the newest installer directly from GitHub Releases.</p>';
+        }
+      }
+
+      async function loadHistory() {
+        const list = $('historyList');
+        try {
+          const res = await fetch(API_LIST, { cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const rels = await res.json();
+          list.innerHTML = '';
+          if (!Array.isArray(rels) || rels.length === 0) {
+            list.innerHTML = '<li class="history-item"><span>No releases published yet.</span></li>';
+            return;
+          }
+          rels.forEach((rel, idx) => {
+            const exe = (rel.assets || []).find((a) => /\.exe$/i.test(a.name));
+            const li = document.createElement('li');
+            li.className = 'history-item';
+
+            const left = document.createElement('a');
+            left.href = (exe && exe.browser_download_url) || rel.html_url;
+            left.textContent = (rel.tag_name || rel.name) + (idx === 0 ? ' (Latest)' : '');
+
+            const right = document.createElement('span');
+            right.className = 'history-meta';
+            right.textContent = [exe ? fmtBytes(exe.size) : '', fmtDate(rel.published_at)].filter(Boolean).join(' · ');
+
+            li.append(left, right);
+            list.appendChild(li);
+          });
+        } catch {
+          list.innerHTML = `<li class="history-item"><a href="${FALLBACK_URL}" target="_blank" rel="noopener">View releases on GitHub →</a></li>`;
+        }
+      }
+
+      // Playful touch: cat mascot pupils gently follow the cursor
+      const pupilL = $('pupilL');
+      const pupilR = $('pupilR');
+      const catSvg = $('catSvg');
+      window.addEventListener('pointermove', (e) => {
+        const r = catSvg.getBoundingClientRect();
+        const dx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / 360));
+        const dy = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / 360));
+        pupilL.setAttribute('cx', (-48 + dx * 10).toFixed(1));
+        pupilL.setAttribute('cy', (-6 + dy * 7).toFixed(1));
+        pupilR.setAttribute('cx', (48 + dx * 10).toFixed(1));
+        pupilR.setAttribute('cy', (-6 + dy * 7).toFixed(1));
+      }, { passive: true });
+
+      loadLatest();
+      loadHistory();
+    })();
+  </script>
+</body>
+</html>
