@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#ffd978"/>
+  <!-- safe-zone friendly: everything sits inside the central ~80% so it works as a maskable icon -->
+  <g transform="translate(256 270)">
+    <path d="M-120 -70 L-104 -150 L-44 -104 Q0 -116 44 -104 L104 -150 L120 -70 Q150 -10 120 60 Q80 120 0 120 Q-80 120 -120 60 Q-150 -10 -120 -70Z" fill="#151515"/>
+    <path d="M-100 -96 L-92 -134 L-62 -112Z M100 -96 L92 -134 L62 -112Z" fill="#e6a6a0"/>
+    <ellipse cx="-48" cy="-6" rx="26" ry="30" fill="#e2b93b"/>
+    <ellipse cx="48" cy="-6" rx="26" ry="30" fill="#e2b93b"/>
+    <ellipse cx="-48" cy="-6" rx="7" ry="22" fill="#151515"/>
+    <ellipse cx="48" cy="-6" rx="7" ry="22" fill="#151515"/>
+    <path d="M-10 40 L10 40 L0 52Z" fill="#e6a6a0"/>
+    <path d="M0 52 Q-14 70 -30 62 M0 52 Q14 70 30 62" fill="none" stroke="#8b8f86" stroke-width="5" stroke-linecap="round"/>
+    <g stroke="#cfd2c8" stroke-width="4" stroke-linecap="round">
+      <path d="M-70 44 L-132 34 M-70 58 L-130 66"/><path d="M70 44 L132 34 M70 58 L130 66"/>
+    </g>
+  </g>
+</svg>
